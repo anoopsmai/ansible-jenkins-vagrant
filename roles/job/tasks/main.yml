@@ -1,0 +1,37 @@
+---
+  - name: install python-jenkins
+    apt:
+      name=python-jenkins
+      state=present
+
+  - name: install python-lxml
+    apt:
+      name=python-lxml
+      state=present
+
+  - name: install gcc
+    apt:
+      name=gcc
+      state=present
+
+  - name: install libtool
+    apt:
+      name=libtool
+      state=present
+
+  - name: install autoconf
+    apt:
+      name=autoconf
+      state=present
+
+  - name: install automake
+    apt:
+      name=automake
+      state=present
+
+  - jenkins_job:
+      config: "{{ lookup('file', 'lighthttp.xml') }}"
+      name: lighthttp
+      password: admin
+      url: http://localhost:8080
+      user: admin
